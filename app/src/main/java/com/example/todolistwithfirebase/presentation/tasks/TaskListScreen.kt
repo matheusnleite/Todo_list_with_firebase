@@ -17,6 +17,8 @@ import androidx.navigation.NavController
 import com.example.todolistwithfirebase.domain.model.Task
 import com.example.todolistwithfirebase.presentation.auth.AuthViewModel
 import com.example.todolistwithfirebase.presentation.navigation.Routes
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import java.util.UUID
 
 /**
@@ -39,7 +41,7 @@ fun TaskListScreen(
     var showDeleteConfirmation by remember { mutableStateOf(false) }
 
     // Carregar tarefas ao abrir a tela ou quando o userId muda
-    val currentUser by authViewModel.currentUser.collectAsState()
+    val currentUser by authViewModel.currentUser.collectAsState(initial = null)
 
     LaunchedEffect(currentUser) {
         currentUser?.uid?.let { uid ->
