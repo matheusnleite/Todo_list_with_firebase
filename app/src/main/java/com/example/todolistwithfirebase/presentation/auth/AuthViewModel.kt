@@ -64,7 +64,12 @@ class AuthViewModel(
 
     fun logout() {
         viewModelScope.launch {
+            // Esta chamada agora invoca a função de suspensão que limpa o cache.
+            // O código parece o mesmo, mas o comportamento subjacente mudou.
             authRepository.logout()
+
+            // Esta linha pode ser redundante se o seu AuthStateListener já
+            // estiver tratando a UI, mas não causa problemas.
             _authState.value = AuthState.Idle
             // O listener no init vai detectar o logout e setar _currentUser para null
         }

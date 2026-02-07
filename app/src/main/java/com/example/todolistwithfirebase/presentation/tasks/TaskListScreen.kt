@@ -44,9 +44,7 @@ fun TaskListScreen(
     val currentUser by authViewModel.currentUser.collectAsState(initial = null)
 
     LaunchedEffect(currentUser) {
-        currentUser?.uid?.let { uid ->
-            taskViewModel.loadTasks(uid)
-        }
+        taskViewModel.loadTasks(currentUser?.uid)
     }
 
     Scaffold(

@@ -35,7 +35,7 @@ class TaskViewModel(
                         emit(TaskState.Error(error.message ?: "Error loading tasks") as TaskState)
                     }
             } else {
-                flowOf(TaskState.Loading as TaskState)
+                flowOf(TaskState.Success(emptyList()) as TaskState)
             }
         }
         .stateIn(
@@ -44,7 +44,7 @@ class TaskViewModel(
             initialValue = TaskState.Loading
         )
 
-    fun loadTasks(userId: String) {
+    fun loadTasks(userId: String?) {
         Log.d("TaskViewModel", "loadTasks called with userId: $userId")
         _userId.value = userId
     }
