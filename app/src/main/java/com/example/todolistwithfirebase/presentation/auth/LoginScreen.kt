@@ -12,10 +12,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.todolistwithfirebase.presentation.navigation.Routes
 
-/**
- * Claude - início
- * Prompt: Criar tela de login com Jetpack Compose com validações e integração com ViewModel
- */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(
@@ -162,8 +158,4 @@ private fun isValidEmail(email: String): Boolean {
 }
 /**
  * Matheus - final
- */
-
-/**
- * Claude - final
  */

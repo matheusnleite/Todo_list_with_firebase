@@ -21,10 +21,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import java.util.UUID
 
-/**
- * Claude - início
- * Prompt: Criar tela de lista de tarefas com Scaffold, TopAppBar, FAB, LazyColumn e TaskItem
- */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TaskListScreen(
@@ -383,7 +379,3 @@ fun DeleteConfirmationDialog(
         }
     )
 }
-
-/**
- * Claude - final
- */

@@ -20,10 +20,6 @@ import com.example.todolistwithfirebase.ui.theme.TodoListWithFirebaseTheme
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-/**
- * Claude - início
- * Prompt: Criar MainActivity com integração completa de Firebase, ViewModels e NavGraph
- */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,6 +64,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-/**
- * Claude - final
- */

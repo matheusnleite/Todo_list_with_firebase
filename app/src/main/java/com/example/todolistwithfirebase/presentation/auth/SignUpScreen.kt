@@ -12,10 +12,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.todolistwithfirebase.presentation.navigation.Routes
 
-/**
- * Claude - início
- * Prompt: Criar tela de sign up com Jetpack Compose, validações de email, senha e confirmação
- */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(
@@ -193,8 +189,4 @@ private fun isValidEmail(email: String): Boolean {
 }
 /**
  * Matheus - final
- */
-
-/**
- * Claude - final
  */

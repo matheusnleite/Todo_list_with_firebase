@@ -10,10 +10,6 @@ import com.example.todolistwithfirebase.presentation.auth.SignUpScreen
 import com.example.todolistwithfirebase.presentation.tasks.TaskListScreen
 import com.example.todolistwithfirebase.presentation.tasks.TaskViewModel
 
-/**
- * Claude - início
- * Prompt: Criar navigation graph com Jetpack Compose Navigation com telas integradas
- */
 @Composable
 fun NavGraph(
     navController: NavHostController,
@@ -45,6 +41,3 @@ fun NavGraph(
         }
     }
 }
-/**
- * Claude - final
- */
