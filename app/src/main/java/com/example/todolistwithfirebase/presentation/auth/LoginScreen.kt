@@ -141,7 +141,10 @@ fun LoginScreen(
 
             // Sign Up Link
             TextButton(
-                onClick = { navController.navigate(Routes.SignUp.route) },
+                onClick = {
+                    viewModel.resetState()
+                    navController.navigate(Routes.SignUp.route)
+                },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text("Não tem conta? Cadastre-se aqui")
