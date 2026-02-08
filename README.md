@@ -69,26 +69,6 @@ User Input → ViewModel → Repository → Firebase → Flow → ViewModel → 
 
 ---
 
-## 📱 Screenshots
-
-### Tela de Login
-
-Autenticação com email e senha, validação em tempo real, exibição de erros.
-
-### Tela de Sign Up
-
-Cadastro com validação de email, força de senha e confirmação.
-
-### Tela de Lista de Tarefas
-
-Listagem com checkbox, edição em linha, deletion com confirmação.
-
-### Diálogos
-
-AlertDialogs para adicionar, editar e confirmar deleção de tarefas.
-
----
-
 ## 🛠️ Tecnologias Utilizadas
 
 | Categoria            | Tecnologia                            |
