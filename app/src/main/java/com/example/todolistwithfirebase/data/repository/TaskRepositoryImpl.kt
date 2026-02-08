@@ -11,8 +11,9 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 
 /**
- * Claude - início
- * Prompt: Criar implementação de TaskRepository com Firestore, incluindo callbackFlow para sincronização em tempo real
+ * Claude - Estrutura de sincronização Firestore
+ * Prompt: Implementar TaskRepository com Firestore, incluindo snapshot listener com callbackFlow para sincronização em tempo real
+ * Implementação com callbackFlow + snapshot listener
  */
 class TaskRepositoryImpl(
     private val firebaseFirestore: FirebaseFirestore
@@ -99,6 +100,3 @@ class TaskRepositoryImpl(
         }
     }
 }
-/**
- * Claude - final
- */

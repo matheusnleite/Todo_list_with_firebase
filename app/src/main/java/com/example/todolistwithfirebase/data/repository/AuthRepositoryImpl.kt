@@ -9,10 +9,6 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.tasks.await
 
-/**
- * Claude - início
- * Prompt: Criar implementação de AuthRepository com Firebase Auth
- */
 class AuthRepositoryImpl(
     private val firebaseAuth: FirebaseAuth
 ) : AuthRepository {
@@ -71,6 +67,3 @@ class AuthRepositoryImpl(
         }
     }
 }
-/**
- * Claude - final
- */

@@ -17,8 +17,12 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
 /**
- * Claude - início
- * Prompt: Criar ViewModel para gerenciar tarefas com Firestore
+ * Claude - Padrão flatMapLatest + stateIn
+ * Prompt: Criar ViewModel para gerenciar tarefas com Firestore, mantendo listener ativo e sincronizando em tempo real
+ *
+ * ViewModel responsável pelo gerenciamento de tarefas
+ * Utiliza flatMapLatest para automaticamente carregar tarefas quando userId muda
+ * Mantém listener do Firestore ativo enquanto ViewModel estiver vivo (SharingStarted.Lazily)
  */
 class TaskViewModel(
     private val taskRepository: TaskRepository
@@ -26,6 +30,10 @@ class TaskViewModel(
 
     private val _userId = MutableStateFlow<String?>(null)
 
+    /**
+     * StateFlow que emite a lista de tarefas do usuário atual
+     * Atualiza automaticamente quando dados mudam no Firestore
+     */
     val taskState: StateFlow<TaskState> = _userId
         .flatMapLatest { userId ->
             if (userId != null) {
@@ -44,11 +52,20 @@ class TaskViewModel(
             initialValue = TaskState.Loading
         )
 
+    /**
+     * Carrega as tarefas do usuário especificado
+     * Muda o userId, que dispara automaticamente a observação de tarefas via flatMapLatest
+     * @param userId ID do usuário, ou null para limpar lista
+     */
     fun loadTasks(userId: String?) {
         Log.d("TaskViewModel", "loadTasks called with userId: $userId")
         _userId.value = userId
     }
 
+    /**
+     * Adiciona uma nova tarefa ao Firestore
+     * @param task Tarefa a ser adicionada
+     */
     fun addTask(task: Task) {
         viewModelScope.launch {
             val result = taskRepository.addTask(task)
@@ -58,6 +75,10 @@ class TaskViewModel(
         }
     }
 
+    /**
+     * Atualiza uma tarefa existente no Firestore
+     * @param task Tarefa com dados atualizados
+     */
     fun updateTask(task: Task) {
         viewModelScope.launch {
             val result = taskRepository.updateTask(task)
@@ -67,6 +88,11 @@ class TaskViewModel(
         }
     }
 
+    /**
+     * Deleta uma tarefa do Firestore
+     * @param taskId ID da tarefa a deletar
+     * @param userId ID do usuário proprietário
+     */
     fun deleteTask(taskId: String, userId: String) {
         viewModelScope.launch {
             val result = taskRepository.deleteTask(taskId, userId)
@@ -76,10 +102,11 @@ class TaskViewModel(
         }
     }
 
+    /**
+     * Marca/desmarca uma tarefa como concluída
+     * @param task Tarefa a ser toggled
+     */
     fun toggleTaskCompletion(task: Task) {
         updateTask(task.copy(isCompleted = !task.isCompleted))
     }
 }
-/**
- * Claude - final
- */

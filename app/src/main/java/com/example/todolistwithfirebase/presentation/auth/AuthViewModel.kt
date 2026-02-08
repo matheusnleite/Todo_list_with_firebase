@@ -11,8 +11,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 /**
- * Claude - início
- * Prompt: Criar ViewModel para gerenciar autenticação com Firebase
+ * Claude - AuthStateListener para reagir a mudanças de sessão
+ * Prompt: Criar ViewModel para gerenciar autenticação com Firebase, com estados (Loading, Success, Error)
  */
 class AuthViewModel(
     private val authRepository: AuthRepository
@@ -35,6 +35,11 @@ class AuthViewModel(
         }
     }
 
+    /**
+     * Realiza login do usuário com email e senha
+     * @param email Email do usuário
+     * @param password Senha do usuário
+     */
     fun login(email: String, password: String) {
         viewModelScope.launch {
             _authState.value = AuthState.Loading
@@ -49,6 +54,11 @@ class AuthViewModel(
         }
     }
 
+    /**
+     * Realiza cadastro de novo usuário
+     * @param email Email do novo usuário
+     * @param password Senha do novo usuário
+     */
     fun signUp(email: String, password: String) {
         viewModelScope.launch {
             _authState.value = AuthState.Loading
@@ -62,6 +72,9 @@ class AuthViewModel(
         }
     }
 
+    /**
+     * Realiza logout do usuário
+     */
     fun logout() {
         viewModelScope.launch {
             // Esta chamada agora invoca a função de suspensão que limpa o cache.
@@ -75,11 +88,11 @@ class AuthViewModel(
         }
     }
 
+    /**
+     * Reseta o estado de autenticação para Idle
+     * Utilizado ao navegar entre telas para limpar erros anteriores
+     */
     fun resetState() {
         _authState.value = AuthState.Idle
     }
 }
-
-/**
- * Claude - final
- */
