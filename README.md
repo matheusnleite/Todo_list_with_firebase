@@ -310,6 +310,6 @@ Este projeto é fornecido como exemplo educacional.
 
 ## 👥 Autores
 
-Desenvolvido como parte de projeto acadêmico/training em Android Development por Matheus Nascimento e Luccas Asaphe
+Desenvolvido por Matheus Nascimento e Luccas Asaphe
 
 ---
