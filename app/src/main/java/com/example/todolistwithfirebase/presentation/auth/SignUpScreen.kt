@@ -172,7 +172,10 @@ fun SignUpScreen(
 
             // Back to Login Link
             TextButton(
-                onClick = { navController.popBackStack() },
+                onClick = {
+                    viewModel.resetState()
+                    navController.popBackStack()
+                },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text("Já tem conta? Faça login")
